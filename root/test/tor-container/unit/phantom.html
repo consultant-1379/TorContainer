@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test Cases</title>
+    <meta charset="utf-8">
+
+    <!-- _tools are copied using copy task in build before execution of tests -->
+    <script src="../_tools/jasmine/test-prepare.js"></script>
+    <script src="../../../node_modules/titan/titan-dev.js"></script>
+</head>
+<body>
+<script>
+    if (loadTestDependencies) {
+        loadTestDependencies(true, function () {
+            require({
+                baseUrl: '../../../src',
+                paths: {
+                    test: '../../test/tor-container/unit'
+                }
+            }, [
+                'test/tor-container/Application'
+            ], function () {
+                jasmine.getEnv().addReporter(new jasmine.HtmlReporter());
+                jasmine.getEnv().addReporter(new jasmine.ConsoleReporter());
+                jasmine.getEnv().execute();
+            });
+        });
+    } else {
+        console.log('Tools for test preparation are not loaded');
+    }
+</script>
+<div id="Container"></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+    "properties":{
+        "node":{
+            "?os.platform=windows":"tools/nodejs/bin/node.exe",
+            "?os.platform=unix":"tools/nodejs/bin/node"
+        },
+        "namespace": "tor-container"
+    },
+    "parents":"$(pathToSdk)/tools/torui/build.json",
+    "phases": {
+        "cleanup-after-optimize": {
+            "delete":{
+                "target":[
+                    "$(buildDir)/package/build.txt",
+                    "$(buildDir)/package/styles.js",
+                    "$(buildDir)/package/template.js"
+                ]
+            }
+        },
+        "package":{
+            "depends": ["test", "optimize", "cleanup-after-optimize"],
+            "copy":{
+                "from":[
+                    "config/apps.json",
+                    "resources/*",
+                    "package.json",
+                    "node_modules/titan/titan-dev.js"
+                ],
+                "to":"$(buildDir)/package/"
+            }
+        }
+    }
+}

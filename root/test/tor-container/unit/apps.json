@@ -1,0 +1,16 @@
+{
+    "apps": [
+        {
+            "name": "Test 1",
+            "namespace": "test/app-test1",
+            "script": "main",
+            "hash": "app-test1"
+        },
+        {
+            "name": "Test 2",
+            "namespace": "test/app-test2",
+            "script": "main",
+            "hash": "app-test2"
+        }
+    ]
+}

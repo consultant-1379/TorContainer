@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test Cases</title>
+    <meta charset="utf-8">
+
+    <!-- By using express.js it will automatically have _tools to alias tools directory under uisdk -->
+    <script src="/_tools/jasmine/test-prepare.js"></script>
+    <script src="../../../node_modules/titan/titan-dev.js"></script>
+</head>
+<body>
+<script>
+    if (loadTestDependencies) {
+        loadTestDependencies(false, function () {
+            require({
+                baseUrl: '../../../src',
+                paths: {
+                    test: '../../test/tor-container/unit'
+                }
+            }, [
+                'test/tor-container/Application'
+            ], function () {
+                jasmine.getEnv().addReporter(new jasmine.HtmlReporter());
+                jasmine.getEnv().addReporter(new jasmine.ConsoleReporter());
+                jasmine.getEnv().execute();
+            });
+        });
+    } else {
+        console.log('Tools for test preparation are not loaded');
+    }
+</script>
+<div id="Container"></div>
+</body>
+</html>

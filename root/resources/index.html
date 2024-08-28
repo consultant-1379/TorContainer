@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application</title>
+    <meta charset="utf-8">
+
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="icon" type="image/x-icon" href="tor-container/imgs/favicon.ico" >
+    <link rel="stylesheet" href="tor-container/default.css">
+
+    <style type="text/css">
+        #appContainer {
+            position: absolute;
+            top: 34px;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+
+    <script src="titan-dev.js"></script>
+    <script src="tor-container/Application.js"></script>
+    <script>
+        require(['domReady!', 'tor-container/Application'], function (doc, Application) {
+            var appContainer = new Application({
+                container: '#appContainer'
+            });
+            appContainer.start();
+        });
+    </script>
+</head>
+<body>
+<div>
+    <div class="cont-topBar">
+        <span class="cont-topBar-logo"></span>
+        <div id="TopMenu"></div>
+    </div>
+    <div id="appContainer"></div>
+</div>
+</body>
+</html>

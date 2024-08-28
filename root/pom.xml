@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ericsson.nms</groupId>
+        <artifactId>integration</artifactId>
+        <version>13.2.0.67</version>
+    </parent>
+
+    <groupId>com.ericsson.nms.pres</groupId>
+    <artifactId>tor-container</artifactId>
+    <version>1.0.43-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <node.executable>/proj/gitadm100/tools/node/0.8.18/bin/node</node.executable>
+        <npm.executable>/proj/gitadm100/tools/node/0.8.18/bin/npm</npm.executable>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>npm_install</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${npm.executable}</executable>
+                            <arguments>
+                                <argument>install</argument>
+                                <argument>--tmp</argument>
+                                <argument>${project.build.directory}/tmp</argument>
+                                <argument>--cache</argument>
+                                <argument>${project.build.directory}/tmp/.npm</argument>
+                                <argument>--force</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>ui sdk build</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${node.executable}</executable>
+                            <arguments>
+                                <argument>node_modules/uisdk/src/uisdk.js</argument>
+                                <argument>build</argument>
+                                <argument>--no-color</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>inject-version</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>target/</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>package.json</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>tools/assembly/prod.xml</descriptor>
+                    </descriptors>
+                    <appendAssemblyId>true</appendAssemblyId>
+                    <archiveBaseDirectory>${project.build.directory}</archiveBaseDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+    <profiles>
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <properties>
+                <node.executable>node.cmd</node.executable>
+                <npm.executable>npm.cmd</npm.executable>
+            </properties>
+        </profile>
+    </profiles>
+</project>

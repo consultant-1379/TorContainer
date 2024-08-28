@@ -1,0 +1,126 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.0em;
+    width: 100%;
+    height: 100%;
+    background: #FBFAFB;
+}
+
+button, input, textarea, select {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a, a:hover {
+    color: #0066B3;
+    text-decoration: none;
+}
+
+.cont-topBar {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    z-index: 100;
+    border-top: 4px solid #0066b3;
+
+    background: #e2e1e1;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFF), color-stop(1, #e2e1e1));
+    background: -ms-linear-gradient(top, #FFF, #e2e1e1);
+    background: -o-linear-gradient(center top, #FFF 0%, #e2e1e1 100%);
+    background: -webkit-linear-gradient(center top, #FFF 0%, #e2e1e1 100%);
+    background: -moz-linear-gradient(center top, #FFF 0%, #e2e1e1 100%);
+    background: linear-gradient(center top, #FFF 0%, #e2e1e1 100%);
+
+    -webkit-box-shadow: 0 2px 2px #d2d2d2;
+    -moz-box-shadow: 0 2px 2px #d2d2d2;
+    box-shadow: 0 2px 2px #d2d2d2;
+}
+
+.cont-topBar::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    font-size: 0;
+    top: -4px;
+    left: 0;
+
+    background: #0066b3;
+    background: -o-linear-gradient(left, #A2C517 10%, #009046 30%, #0082B6 50%, #151F77 70%, #DB0050 100%);
+    background: -moz-linear-gradient(left, #A2C517 10%, #009046 30%, #0082B6 50%, #151F77 70%, #DB0050 100%);
+    background: -webkit-linear-gradient(left, #A2C517 10%, #009046 30%, #0082B6 50%, #151F77 70%, #DB0050 100%);
+    background: -ms-linear-gradient(left, #A2C517 10%, #009046 30%, #0082B6 50%, #151F77 70%, #DB0050 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0.1, #A2C517), color-stop(0.3, #009046), color-stop(0.5, #0082B6), color-stop(0.7, #151F77), color-stop(1, #DB0050));
+    background: linear-gradient(left, #A2C517 10%, #009046 30%, #0082B6 50%, #151F77 70%, #DB0050 100%);
+}
+
+.cont-topBar-logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: url('imgs/econ01.svg') no-repeat center center transparent;
+    width: 50px;
+    background-size: 20px 20px;
+}
+
+.bar-top-topBar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50px;
+    list-style: none;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.bar-top-topBar li {
+    display: inline-block;
+}
+
+.bar-top-topBar a {
+    padding: 0 5px 0 15px;
+    margin: 0;
+    font-size: 1em;
+    line-height: 30px;
+    color: #58585a;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.bar-top-topBar a:hover {
+    color: #0066B3;
+}
+
+/*Temporary logout*/
+.bar-top-signOutButton {
+    float: right;
+    display: inline-block;
+    line-height: 30px;
+    margin: 0 15px;
+    vertical-align: middle;
+    font-size: 0.8em;
+    cursor:pointer;
+    background: url('imgs/logout_black.svg') no-repeat 0 center;
+    padding-left: 20px;
+}
+.bar-top-signOutButton:hover {
+    text-decoration: underline;
+}
+/*Temporary help*/
+.bar-top-helpButton {
+    float: right;
+    display: inline-block;
+    line-height: 30px;
+    margin: 0 15px;
+    vertical-align: middle;
+    font-size: 0.8em;
+    cursor:pointer;
+    background: url('imgs/help_black.svg') no-repeat 0 center;
+    padding-left: 20px;
+}
+.bar-top-helpButton:hover {
+    text-decoration: underline;
+}

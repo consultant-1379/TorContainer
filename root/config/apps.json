@@ -1,0 +1,8 @@
+{"apps": [
+    {
+        "hash": "tor-launcher",
+        "namespace": "tor-launcher",
+        "name": "Launcher",
+        "script": "Application"
+    }
+]}
